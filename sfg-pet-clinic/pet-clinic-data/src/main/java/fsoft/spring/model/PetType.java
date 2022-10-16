@@ -1,4 +1,4 @@
-package src.main.java.fsoft.spring.sfgpetclinic.model;
+package fsoft.spring.model;
 
 public class PetType {
 
