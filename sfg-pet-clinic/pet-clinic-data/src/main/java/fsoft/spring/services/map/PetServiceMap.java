@@ -11,12 +11,12 @@ public class PetServiceMap extends AbstractMapService<Pet, Long> implements PetS
 
     @Override
     public Set<Pet> findAll() {
-        return this.findAll();
+        return super.findAll();
     }
 
     @Override
     public void deleteById(Long id) {
-        this.deleteById(id);
+        super.deleteById(id);
     }
 
     @Override
@@ -26,11 +26,11 @@ public class PetServiceMap extends AbstractMapService<Pet, Long> implements PetS
 
     @Override
     public Pet save(Pet object) {
-        return this.save(object);
+        return super.save(object.getId(),object);
     }
 
     @Override
     public Pet findById(Long id) {
-        return this.findById(id);
+        return super.findById(id);
     }
 }
