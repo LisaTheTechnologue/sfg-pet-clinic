@@ -3,9 +3,10 @@ package fsoft.spring.services.map;
 import fsoft.spring.model.Vet;
 import fsoft.spring.services.CrudService;
 import fsoft.spring.services.VetService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
-
+@Service
 public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetService {
 
     @Override
