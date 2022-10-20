@@ -1,6 +1,6 @@
-package fsoft.spring.controllers;
+package fsoft.spring.sfgpetclinic.controllers;
 
-import fsoft.spring.services.OwnerService;
+import fsoft.spring.sfgpetclinic.services.OwnerService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;

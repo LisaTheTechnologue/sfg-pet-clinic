@@ -1,8 +1,7 @@
-package fsoft.spring.services.map;
+package fsoft.spring.sfgpetclinic.services.map;
 
-import fsoft.spring.model.Vet;
-import fsoft.spring.services.CrudService;
-import fsoft.spring.services.VetService;
+import fsoft.spring.sfgpetclinic.model.Vet;
+import fsoft.spring.sfgpetclinic.services.VetService;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;

@@ -1,6 +1,6 @@
-package fsoft.spring.services.map;
+package fsoft.spring.sfgpetclinic.services.map;
 
-import fsoft.spring.model.BaseEntity;
+import fsoft.spring.sfgpetclinic.model.BaseEntity;
 
 import java.util.*;
 

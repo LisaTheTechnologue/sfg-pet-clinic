@@ -1,11 +1,9 @@
-package fsoft.spring.bootstrap;
+package fsoft.spring.sfgpetclinic.bootstrap;
 
-import fsoft.spring.model.Owner;
-import fsoft.spring.model.Vet;
-import fsoft.spring.services.OwnerService;
-import fsoft.spring.services.VetService;
-import fsoft.spring.services.map.OwnerServiceMap;
-import fsoft.spring.services.map.VetServiceMap;
+import fsoft.spring.sfgpetclinic.model.Owner;
+import fsoft.spring.sfgpetclinic.model.Vet;
+import fsoft.spring.sfgpetclinic.services.OwnerService;
+import fsoft.spring.sfgpetclinic.services.VetService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 

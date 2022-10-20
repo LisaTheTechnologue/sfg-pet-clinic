@@ -1,7 +1,7 @@
-package fsoft.spring.services.map;
+package fsoft.spring.sfgpetclinic.services.map;
 
-import fsoft.spring.model.Owner;
-import fsoft.spring.services.OwnerService;
+import fsoft.spring.sfgpetclinic.model.Owner;
+import fsoft.spring.sfgpetclinic.services.OwnerService;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
