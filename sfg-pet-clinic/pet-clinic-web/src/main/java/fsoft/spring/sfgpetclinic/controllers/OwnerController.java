@@ -1,5 +1,6 @@
 package fsoft.spring.sfgpetclinic.controllers;
 
+import fsoft.spring.sfgpetclinic.model.Owner;
 import fsoft.spring.sfgpetclinic.services.OwnerService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,5 +21,11 @@ public class OwnerController {
 
         model.addAttribute("owners", ownerService.findAll());
         return "owners/index";
+    }
+
+    @RequestMapping("/find")
+    public String findOwners(Model model){
+        //model.addAttribute("owner", Owner.builder().build());
+        return "notimplemented";
     }
 }
