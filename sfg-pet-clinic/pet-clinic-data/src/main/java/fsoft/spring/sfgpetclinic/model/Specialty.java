@@ -1,7 +1,11 @@
 package fsoft.spring.sfgpetclinic.model;
 
-public class Specialty extends BaseEntity{
+import javax.persistence.*;
 
+@Entity
+@Table(name = "specialties")
+public class Specialty extends BaseEntity{
+    @Column(name = "description")
     private String description;
 
     public String getDescription() {
