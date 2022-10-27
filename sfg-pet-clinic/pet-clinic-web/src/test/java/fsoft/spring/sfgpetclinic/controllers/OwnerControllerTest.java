@@ -1,7 +1,11 @@
 package fsoft.spring.sfgpetclinic.controllers;
 
 import fsoft.spring.sfgpetclinic.model.Owner;
+import fsoft.spring.sfgpetclinic.model.Pet;
+import fsoft.spring.sfgpetclinic.model.PetType;
 import fsoft.spring.sfgpetclinic.services.OwnerService;
+import fsoft.spring.sfgpetclinic.services.PetService;
+import fsoft.spring.sfgpetclinic.services.PetTypeService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -17,7 +21,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static org.hamcrest.Matchers.*;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
@@ -148,5 +151,104 @@ class OwnerControllerTest {
                 .andExpect(model().attributeExists("owner"));
 
         verify(ownerService).save(ArgumentMatchers.any());
+    }
+
+    @ExtendWith(MockitoExtension.class)
+    static
+    class PetControllerTest {
+
+        @Mock
+        PetService petService;
+
+        @Mock
+        OwnerService ownerService;
+
+        @Mock
+        PetTypeService petTypeService;
+
+        @InjectMocks
+        PetController petController;
+
+        MockMvc mockMvc;
+
+        Owner owner;
+        Set<PetType> petTypes;
+
+        @BeforeEach
+        void setUp() {
+            owner = Owner.builder().id(1l).build();
+
+            petTypes = new HashSet<>();
+            petTypes.add(PetType.builder().id(1L).name("Dog").build());
+            petTypes.add(PetType.builder().id(2L).name("Cat").build());
+
+            mockMvc = MockMvcBuilders
+                    .standaloneSetup(petController)
+                    .build();
+        }
+
+        @Test
+        void initCreationForm() throws Exception {
+            when(ownerService.findById(anyLong())).thenReturn(owner);
+            when(petTypeService.findAll()).thenReturn(petTypes);
+
+            mockMvc.perform(get("/owners/1/pets/new"))
+                    .andExpect(status().isOk())
+                    .andExpect(model().attributeExists("owner"))
+                    .andExpect(model().attributeExists("pet"))
+                    .andExpect(view().name("pets/createOrUpdatePetForm"));
+        }
+
+        @Test
+        void processCreationForm() throws Exception {
+            when(ownerService.findById(anyLong())).thenReturn(owner);
+            when(petTypeService.findAll()).thenReturn(petTypes);
+
+            mockMvc.perform(post("/owners/1/pets/new"))
+                    .andExpect(status().is3xxRedirection())
+                    .andExpect(view().name("redirect:/owners/1"));
+
+            verify(petService).save(any());
+        }
+
+        @Test
+        void initUpdateForm() throws Exception {
+            when(ownerService.findById(anyLong())).thenReturn(owner);
+            when(petTypeService.findAll()).thenReturn(petTypes);
+            when(petService.findById(anyLong())).thenReturn(Pet.builder().id(2L).build());
+
+            mockMvc.perform(get("/owners/1/pets/2/edit"))
+                    .andExpect(status().isOk())
+                    .andExpect(model().attributeExists("owner"))
+                    .andExpect(model().attributeExists("pet"))
+                    .andExpect(view().name("pets/createOrUpdatePetForm"));
+        }
+
+        @Test
+        void processUpdateForm() throws Exception {
+            when(ownerService.findById(anyLong())).thenReturn(owner);
+            when(petTypeService.findAll()).thenReturn(petTypes);
+
+            mockMvc.perform(post("/owners/1/pets/2/edit"))
+                    .andExpect(status().is3xxRedirection())
+                    .andExpect(view().name("redirect:/owners/1"));
+
+            verify(petService).save(any());
+        }
+
+        @Test
+        void populatePetTypes() {
+            //todo impl
+        }
+
+        @Test
+        void findOwner() {
+            //todo impl
+        }
+
+        @Test
+        void initOwnerBinder() {
+            //todo impl
+        }
     }
 }

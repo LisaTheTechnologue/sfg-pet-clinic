@@ -22,7 +22,7 @@ public class PetServiceMap extends AbstractMapService<Pet, Long> implements PetS
 
     @Override
     public void delete(Pet object) {
-        this.delete(object);
+        super.delete(object);
     }
 
     @Override
